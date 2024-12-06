@@ -74,7 +74,6 @@ body {
 }
 
 
-/* General Hero Section Styling */
 #hero {
   position: relative;
   height: 100vh;
@@ -83,7 +82,7 @@ body {
   align-items: center;
   justify-content: flex-end; /* Align to the right */
   color: white;
-  transition: height 0.5s ease-in-out; /* Smooth transition for height */
+  transition: height 0.5s ease-in-out, transform 0.5s ease-out; /* Smooth transition for height and upward movement */
 }
 
 .hero-text {
@@ -99,19 +98,19 @@ body {
 }
 
 .hero-text h1 {
-  font-size: 3rem;
+  font-size: 5vw; /* Use viewport width for dynamic scaling */
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .hero-text p {
-  font-size: 1.2rem;
+  font-size: 2vw; /* Use viewport width for dynamic scaling */
   margin-bottom: 2rem;
 }
 
 .hero-buttons button {
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  font-size: 2vw; /* Use viewport width for dynamic scaling */
   font-weight: 500;
   margin: 0 0.5rem;
   border: none;
@@ -167,49 +166,58 @@ body {
 /* Media Queries for Responsive Design */
 @media screen and (max-width: 768px) {
   #hero {
-    height: 70vh; /* Adjust height for smaller screens */
-    transform: translateY(-10%); /* Move entire hero section upward */
+    height: 80vh; /* Slightly reduce height for medium screens (tablets, etc.) */
+    transform: translateY(-5%); /* Slight upward shift */
   }
 
   .hero-text {
-    transform: translateY(-20%); /* Move the text upwards */
+    transform: translateY(-5%); /* Slight upward movement for text */
   }
 
   .carousel {
-    transform: translateX(1.5%) translateY(-10%); /* Move carousel images upwards */
+    transform: translateX(1.5%) translateY(-5%); /* Move carousel images slightly upward */
   }
 
   .hero-text h1 {
-    font-size: 2.5rem; /* Adjust font size for smaller screens */
+    font-size: 6vw; /* Dynamic font size for smaller screens */
   }
 
   .hero-text p {
-    font-size: 1rem; /* Adjust font size for smaller screens */
+    font-size: 3vw; /* Dynamic font size for smaller screens */
+  }
+
+  .hero-buttons button {
+    font-size: 3vw; /* Dynamic button font size for smaller screens */
   }
 }
 
 @media screen and (max-width: 480px) {
   #hero {
-    height: 60vh; /* Further reduce height for very small screens */
-    transform: translateY(-20%); /* Move entire hero section further upward */
+    height: 70vh; /* Further reduce height for very small screens */
+    transform: translateY(-5%); /* Slight upward shift for small phones */
   }
 
   .hero-text {
-    transform: translateY(-30%); /* Move the text further upwards */
+    transform: translateY(-10%); /* Slightly higher upward movement for text */
   }
 
   .carousel {
-    transform: translateX(1.8%) translateY(-20%); /* Move carousel images further upwards */
+    transform: translateX(1.8%) translateY(-10%); /* Move carousel images slightly upward */
   }
 
   .hero-text h1 {
-    font-size: 2rem; /* Further adjust font size for small screens */
+    font-size: 8vw; /* Dynamic font size for very small screens */
   }
 
   .hero-text p {
-    font-size: 0.9rem; /* Further adjust font size for small screens */
+    font-size: 4vw; /* Dynamic font size for very small screens */
+  }
+
+  .hero-buttons button {
+    font-size: 4vw; /* Dynamic button font size for very small screens */
   }
 }
+
 
 
 .auth-buttons button {
@@ -691,7 +699,7 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   
-  background-color: #f9f9f9;
+  background-color: #322c2c;
 }
 
 .container {
