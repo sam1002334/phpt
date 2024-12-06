@@ -167,8 +167,7 @@ body {
 /* Media Queries for Responsive Design */
 @media screen and (max-width: 768px) {
   #hero {
-    height: 50vh; /* Adjust height for smaller screens */
-    transform: translateY(-10%); /* Move entire hero section upward */
+    height: 50vh; /* Reduce height for smaller screens */
   }
 
   .hero-text {
@@ -191,7 +190,6 @@ body {
 @media screen and (max-width: 480px) {
   #hero {
     height: 40vh; /* Further reduce height for very small screens */
-    transform: translateY(-20%); /* Move entire hero section further upward */
   }
 
   .hero-text {
