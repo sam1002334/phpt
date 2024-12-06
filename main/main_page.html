@@ -274,10 +274,56 @@
 
 
   </script>
-  
-  
-  
-  
+
+  <script>
+    // Smooth scroll behavior for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default behavior of anchor link
+
+        // Get the target element's position
+        const targetId = this.getAttribute('href').substring(1); // Remove '#' from href
+        const targetElement = document.getElementById(targetId);
+
+        // Scroll smoothly to the target element
+        targetElement.scrollIntoView({
+          behavior: 'smooth', // Smooth scroll effect
+          block: 'start' // Align to the top of the element
+        });
+      });
+    });
+
+  </script>
+
+  <script>
+    // Function to detect if an element is in view
+    function isElementInView(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    // Add 'visible' class when section is in view
+    function animateOnScroll() {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        if (isElementInView(section)) {
+          section.classList.add('visible');
+        }
+      });
+    }
+
+    // Check visibility on scroll
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Check visibility on page load
+    document.addEventListener('DOMContentLoaded', animateOnScroll);
+
+  </script>
   <script>
     const header = document.querySelector('header');
     const heroSection = document.getElementById('hero');
@@ -344,10 +390,5 @@
       showHeader();
     }
   </script>
-  
-
-  
-  
-
 </body>
 </html>
