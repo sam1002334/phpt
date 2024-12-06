@@ -38,7 +38,7 @@ header:hover {
   height: 50px;
 }
 
-nav ul {
+/* nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
@@ -56,7 +56,7 @@ nav ul li a {
 nav ul li a:hover {
   color: #ff4081;
   transform: scale(1.1);
-}
+} */
 
 header {
   position: fixed; /* Fixed positioning for visibility */
@@ -335,7 +335,110 @@ button.next:hover {
 }
 
 
-/* General Styling for the Page */
+/* Global reset and box-sizing */
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+:root {
+  --x: 0;
+  --y: 0;
+  --xp: 0;
+  --yp: 0;
+  --hue: calc(0 + (var(--xp) * 500));
+  --size: 80px; /* Adjust size for smaller buttons */
+  --glow: radial-gradient(
+			50% 50% at center,
+			hsl(var(--hue) 80% 85%),
+			hsl(var(--hue) 80% 70%),
+			transparent
+		)
+		calc((var(--x) * 1px) - (var(--size) * 0.5))
+		calc((var(--y) * 1px) - (var(--size) * 0.5)) / var(--size) var(--size) no-repeat fixed;
+}
+
+/* Styling for the desktop navigation */
+.desktop-nav {
+  display: flex;
+  gap: 0.1rem; /* Reduce spacing between items */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.desktop-nav li {
+  position: relative;
+}
+
+.desktop-nav a {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1ch;
+  color: white; /* Ensure text is visible */
+  padding: 0.4rem 0.4rem; /* Adjust button padding */
+  text-decoration: none;
+  background: var(--bg);
+  border: 4px solid transparent;
+  border-radius: 3rem;
+  z-index: 1; /* Ensure text is on top */
+  transition: 
+    box-shadow 0.3s ease,
+    background-size 0.24s ease-in-out,
+    transform 0.2s ease-in-out,
+    font-size 0.2s ease-in-out,
+    padding 0.2s ease-in-out;
+}
+
+.desktop-nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  filter: blur(20px);
+  background: var(--glow);
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+.desktop-nav a:hover {
+  background-size: 200%;
+  box-shadow: 0 0 20px 4px hsl(var(--hue) 80% 60%);
+  transform: translateX(5px) scale(0.95); /* Slightly shift and shrink */
+  font-size: 0.9rem; /* Decrease font size */
+  padding: 0.35rem 0.9rem; /* Reduce padding */
+}
+
+/* Active button state */
+:root:has(button:active) {
+	--size: 300px;
+}
+
+.desktop-nav a:active {
+  transform: translateX(7px) scale(0.9); /* Further shift and shrink on active */
+  font-size: 0.85rem; /* Further decrease font size */
+  padding: 0.4rem 1rem; /* Further reduce padding */
+}
+
+/* Media Query to hide desktop navigation on smaller screens */
+@media screen and (max-width: 868px) {
+  .desktop-nav {
+    display: none; /* Hide the desktop navigation */
+  }
+}
+
+
 
 
 /* About Us Section Styling */
@@ -576,7 +679,7 @@ header .logo img {
   height: 50px;
 }
 
-nav {
+/* nav {
   display: flex;
   align-items: center;
 }
@@ -593,7 +696,7 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
-}
+} */
 
 
 .auth-buttons {
