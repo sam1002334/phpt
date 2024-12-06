@@ -83,6 +83,7 @@ body {
   align-items: center;
   justify-content: flex-end; /* Align to the right */
   color: white;
+  transition: height 0.5s ease-in-out; /* Smooth transition for height */
 }
 
 .hero-text {
@@ -93,6 +94,8 @@ body {
   text-align: left; /* Align text to the left */
   color: white;
   right: 20px; /* Adjust to move the text to the right */
+  transform: translateY(0); /* Start at the default position */
+  transition: transform 0.5s ease-out; /* Add animation for upward movement */
 }
 
 .hero-text h1 {
@@ -145,7 +148,8 @@ body {
   display: flex;
   align-items: center; /* Vertically center the images */
   justify-content: center; /* Horizontally center the images */
-  transform: translateX(1.3%); /* Move the entire carousel slightly to the right by 1% */
+  transform: translateX(1.3%) translateY(0); /* Move the entire carousel slightly to the right by 1% */
+  transition: transform 0.5s ease-out; /* Smooth transition for upward movement */
 }
 
 .slides {
@@ -160,49 +164,51 @@ body {
   flex-shrink: 0; /* Prevent images from shrinking */
 }
 
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  #hero {
+    height: 50vh; /* Reduce height for smaller screens */
+  }
 
+  .hero-text {
+    transform: translateY(5%); /* Move the text upwards */
+  }
 
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%; /* Ensure it takes up the full width */
+  .carousel {
+    transform: translateX(1.5%) translateY(1%); /* Move carousel images upwards */
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem; /* Adjust font size for smaller screens */
+  }
+
+  .hero-text p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
 }
 
-.slides img {
-  width: 100%; /* Each image should take up the full width of the container */
-  flex-shrink: 0; /* Prevent images from shrinking */
+@media screen and (max-width: 480px) {
+  #hero {
+    height: 40vh; /* Further reduce height for very small screens */
+  }
+
+  .hero-text {
+    transform: translateY(10%); /* Move the text further upwards */
+  }
+
+  .carousel {
+    transform: translateX(1.8%) translateY(2%); /* Move carousel images further upwards */
+  }
+
+  .hero-text h1 {
+    font-size: 2rem; /* Further adjust font size for small screens */
+  }
+
+  .hero-text p {
+    font-size: 0.9rem; /* Further adjust font size for small screens */
+  }
 }
 
-
-
-
-/* Navigation Buttons */
-button.prev,
-button.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-button.prev {
-  left: 1rem;
-}
-
-button.next {
-  right: 1rem;
-}
-
-button.prev:hover,
-button.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
 
 .auth-buttons button {
   margin-left: 10px;
@@ -607,8 +613,6 @@ button.next:hover {
 
 /* Hero Section */
 #hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('hero-background.jpg') no-repeat center center/cover;
   color: #fff;
   text-align: center;
   padding: 80px 20px;
@@ -644,6 +648,36 @@ button.next:hover {
   margin-bottom: 30px;
 }
 
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  #hero {
+    padding: 60px 15px; /* Adjust padding for smaller screens */
+  }
+
+  #hero h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+
+  #hero p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #hero {
+    padding: 40px 10px; /* Further reduce padding for very small screens */
+  }
+
+  #hero h1 {
+    font-size: 1.8rem; /* Further adjust font size for very small screens */
+  }
+
+  #hero p {
+    font-size: 0.9rem; /* Further adjust font size for very small screens */
+  }
+}
+
+
 /* General Reset */
 * {
   margin: 0;
@@ -654,7 +688,7 @@ button.next:hover {
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #333;
+  
   background-color: #f9f9f9;
 }
 
@@ -678,25 +712,6 @@ header {
 header .logo img {
   height: 50px;
 }
-
-/* nav {
-  display: flex;
-  align-items: center;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin-right: auto;
-  margin-left: 20px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-} */
 
 
 .auth-buttons {
@@ -833,6 +848,7 @@ nav ul li a {
   background-color: #e63974; /* Darker pink on hover */
   transform: translateY(-5px);
 }
+
 /* Button Container */
 .hero-buttons button {
   padding: 1rem 2rem;
@@ -867,6 +883,23 @@ nav ul li a {
   outline: none; /* Remove default outline */
   border: 2px solid #ff6ec7; /* Add custom border on focus */
   box-shadow: 0 0 5px 2px rgba(255, 110, 199, 0.5); /* Light glow effect */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .hero-buttons button {
+    padding: 8px 16px; /* Reduce padding */
+    font-size: 0.9rem; /* Reduce font size */
+    margin: 5px; /* Adjust margin */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-buttons button {
+    padding: 6px 12px; /* Further reduce padding */
+    font-size: 0.8rem; /* Further reduce font size */
+    margin: 3px; /* Further adjust margin */
+  }
 }
 
 /* Services Section */
