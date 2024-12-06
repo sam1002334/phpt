@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Life - Engineer Profiles</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="stylesheet" href="main_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="logo1.png" alt="Easy Life Logo">
+    </div>
+    <nav>
+      <ul class="desktop-nav">
+        <li><a href="#services">Categories</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#contact-us">Contact Us</a></li>
+      </ul>
+      <div class="mobile-nav">
+        <button class="hamburger" id="hamburger-btn">&#9776;</button>
+        <ul id="mobile-menu" class="mobile-menu">
+          <li><a href="#services">Categories</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#contact-us">Contact Us</a></li>
+          <li class="mobile-login"><a href="../login_page/login_page.html">Login</a></li>
+
+        </ul>
+      </div>
+    </nav>
+    <div class="auth-buttons">
+      <a href="../login_page/login_page.html">
+        <button>Log In</button>
+      </a>
+      <a href="../signup_page/signup_page.html">
+        <button>Sign Up</button>
+      </a>
+    </div>
+  </header>
+
+ 
+ <!-- Hero Section -->
+  <section id="hero">
+    <div class="carousel">
+      <div class="slides">
+        <img src="photo1.jpg" alt="Image 1" />
+        <img src="photo2.jpeg" alt="Image 2" />
+        <img src="photo3.jpeg" alt="Image 3" />
+      </div>
+      <!-- Navigation buttons -->
+      <button class="prev">❮</button>
+    </div>
+    <div class="hero-text">
+      <h1>Connect with Professional Engineers Instantly</h1>
+      <p>Easy Life is the go-to platform for hiring engineers in any category. Create profiles or find the right professional for your needs today!</p>
+      <div class="hero-buttons">
+        <a href="#">
+          <button>Find Engineer</button>
+        </a>
+        <a href="#">
+          <button>Create Profile</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2>Explore Our Engineering Categories</h2>
+      <div class="categories">
+        <a href="#">
+          <div class="category">
+            <img src="software_engineer.jpeg" alt="Software Engineers">
+            <h3>Software Engineers</h3>
+            <p>Build software solutions tailored to your needs.</p>
+          </div>
+        </a>
+        <a href="#">
+          <div class="category">
+            <img src="mechanical_engineer.jpeg" alt="Mechanical Engineers">
+            <h3>Mechanical Engineers</h3>
+            <p>Find mechanical experts for your projects.</p>
+          </div>
+        </a>
+        <a href="#">
+          <div class="category">
+            <img src="civil_engineer.jpeg" alt="Civil Engineers">
+            <h3>Civil Engineers</h3>
+            <p>Get assistance with construction and planning.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2>How Easy Life Works</h2>
+      <button class="toggle-steps-btn" id="toggle-steps-btn"></button>
+      <div id="steps" class="steps">
+        <div class="step">
+          <img src="customer_logo.png" alt="Customer Icon" class="step-icon">
+          <h3>For Customers</h3>
+          <p>Search for engineers, review profiles, and book instantly.</p>
+        </div>
+        <div class="step">
+          <img src="engineer_icon.png" alt="Engineer Icon" class="step-icon">
+          <h3>For Engineers</h3>
+          <p>Create a professional profile and start receiving job offers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about-us">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Easy Life is a platform dedicated to connecting skilled engineers with clients in need of their expertise. Whether you're a company looking for engineers for a project or an individual seeking specialized services, we offer a seamless experience to help you find the right professional. Our mission is to make engineering services more accessible and efficient, empowering both engineers and clients to connect effortlessly.</p>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <div class="container">
+      <h2>Our Blogs</h2>
+      
+      <!-- First Blog: About Our Company -->
+      <div class="blog-post">
+        <h3>About Easy Life</h3>
+        <p>Easy Life is revolutionizing how businesses and individuals connect with engineers. By leveraging the power of technology, we provide a simple platform where engineers can create detailed profiles showcasing their skills, while clients can easily find the right talent for their projects. Our platform covers multiple engineering categories, ensuring that you can always find the perfect match.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      
+      <!-- Second Blog: How It Works -->
+      <div class="blog-post">
+        <h3>How Easy Life Works</h3>
+        <p>Easy Life connects customers and engineers through a seamless platform. Customers can browse profiles, request specific services, and instantly book the engineer that fits their needs. On the other hand, engineers can create detailed professional profiles, receive project requests, and grow their career by working on a variety of exciting projects. Here's how it works in detail...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Us Section -->
+  <section id="contact-us">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>We'd love to hear from you! If you have any questions or need assistance, feel free to reach out to us.</p>
+      <form action="#" method="POST" id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Your Name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Your Email">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Easy Life. All Rights Reserved.</p>
+      <div class="social-media">
+        <a class="social-icon" href="#"><img src="986944_facebook_icon.png" alt="Facebook"></a>
+        <a class="social-icon" href="#"><img src="2951729_chat_social network_tweet_twitter_icon.png" alt="Twitter"></a>
+        <a class="social-icon" href="#"><img src="2609558_instagram_social media_social_icon.png" alt="Instagram"></a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Toggle mobile menu visibility
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    // Toggle menu on button click
+    hamburgerBtn.addEventListener('click', function (e) {
+      e.stopPropagation(); // Prevent the click from propagating to the document
+      mobileMenu.classList.toggle('active');
+    });
+  
+    // Hide menu on scroll
+    window.addEventListener('scroll', function () {
+      if (mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+  
+    // Hide menu when clicking anywhere outside
+    document.addEventListener('click', function (e) {
+      // Check if the click is outside the menu and the hamburger button
+      if (
+        !mobileMenu.contains(e.target) &&
+        !hamburgerBtn.contains(e.target) &&
+        mobileMenu.classList.contains('active')
+      ) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+  
+    // Toggle How It Works section visibility
+    document.getElementById('toggle-steps-btn').addEventListener('click', function () {
+      const steps = document.getElementById('steps');
+      steps.classList.toggle('active');
+    });
+  </script>
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideImages = document.querySelectorAll('.slides img');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+
+    let currentIndex = 0; // Track the current slide index
+    const slideCount = slideImages.length;
+    const interval = 7000; // Slow down the auto-slide interval (7 seconds)
+
+    // Function to go to the next slide
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      updateSlidePosition();
+    }
+
+    // Function to go to the previous slide
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+      updateSlidePosition();
+    }
+
+    // Function to update the slide position
+    function updateSlidePosition() {
+      // Ensure only one image is visible at a time
+      const offset = -currentIndex * 100; // Calculate the correct offset
+      slides.style.transform = `translateX(${offset}%)`;
+    }
+
+    // Auto-slide functionality
+    let slideInterval = setInterval(nextSlide, interval);
+
+    // Event listeners for navigation buttons
+    nextButton.addEventListener('click', () => {
+      clearInterval(slideInterval); // Stop auto-slide on user interaction
+      nextSlide();
+      slideInterval = setInterval(nextSlide, interval); // Restart auto-slide
+    });
+
+    prevButton.addEventListener('click', () => {
+      clearInterval(slideInterval); // Stop auto-slide on user interaction
+      prevSlide();
+      slideInterval = setInterval(nextSlide, interval); // Restart auto-slide
+    });
+
+    // Initialize the first slide to ensure it shows immediately
+    updateSlidePosition();
+
+
+
+  </script>
+  
+  
+  
+  
+  <script>
+    const header = document.querySelector('header');
+    const heroSection = document.getElementById('hero');
+    let lastScrollY = window.scrollY;
+    let hideHeaderTimeout;
+  
+    // Show the header
+    const showHeader = () => {
+      header.style.top = '0';
+      clearTimeout(hideHeaderTimeout); // Clear any existing hide timeout
+    };
+  
+    // Hide the header
+    const hideHeader = () => {
+      if (!isAtStartingPosition() && !isInHeroSection()) {
+        header.style.top = '-100px';
+      }
+    };
+  
+    // Check if user is at the starting position (top of the page)
+    const isAtStartingPosition = () => {
+      return window.scrollY === 0;
+    };
+  
+    // Check if user is in the hero section
+    const isInHeroSection = () => {
+      const heroRect = heroSection.getBoundingClientRect();
+      return heroRect.top <= 0 && heroRect.bottom > 0; // Fully or partially visible in the viewport
+    };
+  
+    // Automatically hide header after inactivity
+    const startHideHeaderTimer = () => {
+      clearTimeout(hideHeaderTimeout); // Clear any existing timeout
+      if (!isInHeroSection() && !isAtStartingPosition()) {
+        hideHeaderTimeout = setTimeout(() => {
+          hideHeader();
+        }, 3000); // Hide after 3 seconds of inactivity
+      }
+    };
+  
+    // Handle scroll events
+    window.addEventListener('scroll', () => {
+      if (isInHeroSection() || isAtStartingPosition()) {
+        showHeader(); // Always show header in hero section or at the start
+      } else if (window.scrollY < lastScrollY) {
+        showHeader(); // Show header when scrolling up
+      } else {
+        hideHeader(); // Hide header when scrolling down
+      }
+      lastScrollY = window.scrollY;
+      startHideHeaderTimer(); // Restart hide timer
+    });
+  
+    // Handle mouse movement near the top
+    window.addEventListener('mousemove', (e) => {
+      if (e.clientY < 50) {
+        showHeader(); // Show header when mouse is near the top
+      }
+      startHideHeaderTimer(); // Restart hide timer
+    });
+  
+    // Initial check to always show the header at starting position
+    if (isAtStartingPosition() || isInHeroSection()) {
+      showHeader();
+    }
+  </script>
+  
+
+  
+  
+
+</body>
+</html>
