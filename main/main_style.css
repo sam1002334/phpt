@@ -80,10 +80,98 @@ body {
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Align to the right */
+  justify-content: center; /* Center the content horizontally */
   color: white;
-  transition: height 0.5s ease-in-out, transform 0.5s ease-out; /* Smooth transition for height and upward movement */
+  transition: height 0.5s ease-in-out, transform 0.5s ease-out;
+  background: linear-gradient(45deg, #ff6ec7, #ff9a8b); /* Initial gradient */
+  background-size: 50% 50%; /* Larger background for mobile effects */
+  animation: backgroundAnimation 15s ease-in-out infinite alternate; /* Smooth gradient animation */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
+
+/* Keyframes for background gradient animation */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(45deg, #ff6ec7, #ff9a8b);
+  }
+  25% {
+    background: linear-gradient(45deg, #f2c94c, #f79c42);
+  }
+  50% {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+  }
+  75% {
+    background: linear-gradient(45deg, #2b5876, #4e4376);
+  }
+  100% {
+    background: linear-gradient(45deg, #ff9a8b, #f79c42);
+  }
+}
+
+/* Parallax Effect */
+@keyframes parallaxBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Apply Parallax Effect for Mobile Devices */
+@media screen and (max-width: 768px) {
+  #hero {
+    animation: backgroundAnimation 15s ease-in-out infinite alternate; /* Smooth background change */
+    background-size: 200% 200%; /* Larger background size for smooth transition */
+    animation: parallaxBackground 20s ease-in-out infinite; /* Parallax scrolling effect */
+  }
+
+  /* Adjustments to the text and layout */
+  .hero-text {
+    transform: translateY(-10%); /* Slight upward movement for text */
+    text-align: center; /* Center the text */
+    font-size: 2rem;
+  }
+
+  .carousel {
+    transform: translateY(-5%); /* Slight upward movement for carousel */
+  }
+
+  .hero-buttons button {
+    font-size: 3vw; /* Adjust button size */
+    padding: 12px 24px;
+  }
+}
+
+
+
+/* Hover Animation for Text */
+.hero-text h1:hover,
+.hero-text p:hover {
+  transform: scale(1.1); /* Scale text slightly on hover */
+  color: #ff9a8b; /* Change text color on hover */
+  transition: transform 0.3s ease, color 0.3s ease-in-out; /* Smooth transition for scale and color */
+}
+
+/* Hover Effect for Buttons */
+.hero-buttons button:hover {
+  transform: translateY(-5px); /* Button lifts up slightly on hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Deep shadow on hover */
+  background: linear-gradient(45deg, #ff9a8b, #ff6ec7); /* Inverted gradient on hover */
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.5s ease-in-out; /* Smooth transition for effects */
+}
+
+/* Remove background effects for large screens */
+@media screen and (min-width: 1024px) {
+  #hero {
+    background: none; /* Remove dynamic gradient on larger screens */
+    animation: none; /* Remove animation for large screens */
+  }
+}
+
 
 .hero-text {
   position: absolute;
@@ -189,6 +277,11 @@ body {
   .hero-buttons button {
     font-size: 3vw; /* Dynamic button font size for smaller screens */
   }
+
+  /* Hide carousel slides on smaller screens */
+  .slides {
+    display: none; /* Hide the carousel on screens smaller than 768px */
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -216,7 +309,13 @@ body {
   .hero-buttons button {
     font-size: 4vw; /* Dynamic button font size for very small screens */
   }
+
+  /* Hide carousel slides on smaller screens */
+  .slides {
+    display: none; /* Hide the carousel on screens smaller than 480px */
+  }
 }
+
 
 
 
