@@ -34,9 +34,64 @@ header:hover {
   background-color: #2a2a2c; /* Darker background on hover */
 }
 
-.logo img {
-  height: 50px;
+
+
+/* Logo and Company Name Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.logo img {
+  height: 40px; /* Adjust as needed */
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  cursor: pointer;
+}
+
+.logo img:hover {
+  transform: rotate(360deg);
+  
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; /* Adjust the color to match your theme */
+  background: linear-gradient(90deg, #ff4081, #4caf50, #2196f3, #ffeb3b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 3s infinite linear;
+  cursor: pointer;
+  
+}
+
+.company-name:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  text-shadow: 0 0 20px #ff4081, 0 0 30px #4caf50, 0 0 40px #2196f3, 0 0 50px #ffeb3b;
+}
+
+/* Keyframes for Gradient Animation */
+@keyframes gradientText {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/* Click Action for Redirect */
+.logo img, .company-name {
+  cursor: pointer;
+}
+
+.logo img:active, .company-name:active {
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
 
 /* nav ul {
   list-style: none;
@@ -848,9 +903,15 @@ header .logo img {
   border: none;
   color: #fff;
   cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.mobile-nav ul {
+.mobile-nav .hamburger:hover {
+  transform: scale(1.2);
+  color: #ff4081;
+}
+
+.mobile-menu {
   display: none;
   list-style: none;
   flex-direction: column;
@@ -863,24 +924,30 @@ header .logo img {
   width: 200px;
   border-radius: 10px;
   z-index: 100;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.mobile-nav ul.active {
+.mobile-menu.active {
   display: flex;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.mobile-nav ul li a {
+.mobile-menu li a {
   color: #fff;
   text-decoration: none;
   font-size: 1.2rem;
   padding: 10px 15px;
   display: block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.mobile-nav ul li a:hover {
+.mobile-menu li a:hover {
   background-color: #ff4081;
+  transform: translateX(10px);
 }
-
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
@@ -896,6 +963,7 @@ header .logo img {
     display: none; /* Hide auth buttons in mobile view */
   }
 }
+
 
 .hero-buttons button {
   padding: 10px 20px;
