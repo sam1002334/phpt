@@ -36,3 +36,17 @@ document.getElementById('file-input').addEventListener('change', function (event
 document.querySelector('.logout-button').addEventListener('click', function () {
     window.location.href = 'logout.php';
 });
+// Toggle details visibility
+document.getElementById('details-button').addEventListener('click', function () {
+    const details = document.getElementById('profile-details');
+    if (details.style.display === 'block') {
+        details.style.display = 'none';
+        this.textContent = 'Show Details';
+    } else {
+        details.style.display = 'block';
+        this.textContent = 'Hide Details';
+    }
+});
+
+
+

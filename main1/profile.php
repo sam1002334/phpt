@@ -81,24 +81,34 @@ $conn->close();
             </ul>
         </div>
     </nav>
-    <div class="profile">
-            <!-- Profile Photo Section -->
-            <div class="profile-photo" id="profile-photo">
-                <img src="uploads/<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" id="profile-img">
+     <div class="profile">
+        <!-- Profile Photo Section -->
+        
+<div class="profile-photo" id="profile-photo">
+            <img src="<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" id="profile-img">
+        </div>
+        <!-- Profile Menu Section -->
+        <div id="profile-menu" class="profile-menu" style="display: none;">
+            <!-- Always Visible Section -->
+            <div class="profile-summary">
+                <img src="<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" class="profile-photo-small">
+                <p class="profile-name"> <?php echo htmlspecialchars($firstName . ' ' . $lastName); ?> </p>
+                <button class="details-button" id="details-button">Show Details</button>
             </div>
-            <div id="profile-menu" class="profile-menu" style="display: none;">
-                <div class="profile-details">
-                    <img src="uploads/<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" class="profile-photo-small" id="profile-menu-img">
-                    <p class="profile-name"><?php echo htmlspecialchars($firstName . ' ' . $lastName); ?></p>
-                    <p class="profile-email"><?php echo htmlspecialchars($email); ?></p>
-                    <p class="profile-age"><?php echo htmlspecialchars($age); ?></p>
-                    <p class="profile-gender"><?php echo htmlspecialchars($gender); ?></p>
-                </div>
-                <button class="settings-button">Change Profile Photo</button>
-                <button class="logout-button">Logout</button>
-                <input type="file" id="file-input" accept="image/*" style="display: none;">
+
+            <!-- Toggleable Details Section -->
+            <div class="profile-details" id="profile-details">
+                <p class="profile-email">Email: <?php echo htmlspecialchars($email); ?></p>
+                <p class="profile-age">Age: <?php echo htmlspecialchars($age); ?></p>
+                <p class="profile-gender">Gender: <?php echo htmlspecialchars($gender); ?></p>
             </div>
-    </div>
+
+            <!-- Action Buttons -->
+            <button class="settings-button">Change Profile Photo</button>
+            <button class="logout-button" onclick="window.location.href='logout.php'">Logout</button>
+            <input type="file" id="file-input" accept="image/*" style="display: none;">
+        </div>
+     </div>
   </header>
 
  <!-- Hero Section -->
