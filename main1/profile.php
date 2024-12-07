@@ -1,3 +1,47 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login_page.html");
+    exit();
+}
+
+// Database connection details
+$host = "localhost"; // Database host
+$dbname = "login"; // Your database name
+$username = "root"; // Your database username
+$password = ""; // Your database password
+
+// Connect to the database
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get the user's email from the session
+$email = $_SESSION['email'];
+
+// Fetch user data from the signup_user table using the email
+$stmt = $conn->prepare("SELECT firstName, lastName, age, gender, profile_photo FROM signup_user WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
+
+// If user data is found, fetch it
+if ($stmt->num_rows > 0) {
+    $stmt->bind_result($firstName, $lastName, $age, $gender, $profilePhoto);
+    $stmt->fetch();
+} else {
+    die("User data not found.");
+}
+
+$stmt->close();
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,47 +52,55 @@
   <link rel="stylesheet" href="main_style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="profile.css">
 </head>
 <body>
 
   <!-- Header Section -->
   <header>
     <div class="logo">
-      <a href="main_page1.html">
-        <img src="logo1.png" alt="Easy Life Logo">
-      </a>
-      <a href="main_page1.html" class="company-name">Easy Life</a>
+        <a href="main_page1.html">
+            <img src="logo1.png" alt="Easy Life Logo">
+        </a>
+        <a href="main_page1.html" class="company-name">Easy Life</a>
     </div>
     <nav>
-      <ul class="desktop-nav">
-        <li><a href="#services">Categories</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#contact-us">Contact Us</a></li>
-      </ul>
-      <div class="mobile-nav">
-        <button class="hamburger" id="hamburger-btn">&#9776;</button>
-        <ul id="mobile-menu" class="mobile-menu">
-          <li><a href="#services">Categories</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#about-us">About Us</a></li>
-          <li><a href="#contact-us">Contact Us</a></li>
-          <li class="mobile-login"><a href="../login_page/login_page.html">Login</a></li>
+        <ul class="desktop-nav">
+            <li><a href="#services">Categories</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
         </ul>
-      </div>
+        <div class="mobile-nav">
+            <button class="hamburger" id="hamburger-btn">&#9776;</button>
+            <ul id="mobile-menu" class="mobile-menu">
+                <li><a href="#services">Categories</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#contact-us">Contact Us</a></li>
+            </ul>
+        </div>
     </nav>
-    <div class="auth-buttons">
-      <a href="../login_page/login_page.html">
-        <button>Log In</button>
-      </a>
-      <a href="../signup_page/signup_page.html">
-        <button>Sign Up</button>
-      </a>
+    <div class="profile">
+            <!-- Profile Photo Section -->
+            <div class="profile-photo" id="profile-photo">
+                <img src="uploads/<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" id="profile-img">
+            </div>
+            <div id="profile-menu" class="profile-menu" style="display: none;">
+                <div class="profile-details">
+                    <img src="uploads/<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" class="profile-photo-small" id="profile-menu-img">
+                    <p class="profile-name"><?php echo htmlspecialchars($firstName . ' ' . $lastName); ?></p>
+                    <p class="profile-email"><?php echo htmlspecialchars($email); ?></p>
+                    <p class="profile-age"><?php echo htmlspecialchars($age); ?></p>
+                    <p class="profile-gender"><?php echo htmlspecialchars($gender); ?></p>
+                </div>
+                <button class="settings-button">Change Profile Photo</button>
+                <button class="logout-button">Logout</button>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
+            </div>
     </div>
   </header>
-  
 
- 
  <!-- Hero Section -->
   <section id="hero">
     <div class="carousel">
@@ -443,5 +495,6 @@
       showHeader();
     }
   </script>
+  <script src="profile.js"></script>
 </body>
 </html>

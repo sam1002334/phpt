@@ -38,10 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($stored_password);
         $stmt->fetch();
 
-        // Compare the passwords directly
+        // Compare the passwords directly (no hashing in your current code)
         if ($stored_password === $password) {
-            // Password is correct, redirect to the main page
-            header("Location: ../main1/main_page1.html");
+            // Password is correct, start the session and redirect to the profile page
+            session_start();
+            $_SESSION['email'] = $email;
+            header("Location: ../main1/profile.php");
             exit();
         } else {
             // Incorrect password
