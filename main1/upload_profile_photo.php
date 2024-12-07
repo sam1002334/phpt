@@ -9,8 +9,31 @@ if (!isset($_SESSION['email'])) {
 
 $email = $_SESSION['email'];
 $target_dir = "uploads/"; // Directory to store uploaded images
-$target_file = $target_dir . basename($_FILES["file"]["name"]);
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$imageFileType = strtolower(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION));
+
+// Generate a unique file name to avoid overwriting existing files
+$uniqueFileName = uniqid("profile_", true) . "." . $imageFileType;
+$target_file = $target_dir . $uniqueFileName;
+
+// Connect to the database
+$conn = new mysqli("localhost", "root", "", "login");
+if ($conn->connect_error) {
+    echo json_encode(['success' => false, 'message' => 'Database connection failed']);
+    exit();
+}
+
+// Check if the user has an existing profile photo
+$stmt = $conn->prepare("SELECT profile_photo FROM signup_user WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->bind_result($existingPhoto);
+$stmt->fetch();
+$stmt->close();
+
+// If a previous photo exists, delete it
+if ($existingPhoto && file_exists($existingPhoto)) {
+    unlink($existingPhoto); // Deletes the file
+}
 
 // Validate if the file is an actual image
 if (isset($_POST["submit"])) {
@@ -36,27 +59,20 @@ if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "pn
 // Try to upload the file
 if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
     // File upload successful, now update the database with the new profile photo
-    $conn = new mysqli("localhost", "root", "", "login");
-
-    if ($conn->connect_error) {
-        echo json_encode(['success' => false, 'message' => 'Database connection failed']);
-        exit();
-    }
-
-    // Prepare an update query
     $stmt = $conn->prepare("UPDATE signup_user SET profile_photo = ? WHERE email = ?");
     $stmt->bind_param("ss", $target_file, $email);
 
     if ($stmt->execute()) {
         // Successfully updated profile photo
-        echo json_encode(['success' => true, 'fileName' => $target_file]);
+        echo json_encode(['success' => true, 'fileName' => $uniqueFileName]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Database update failed']);
     }
 
     $stmt->close();
-    $conn->close();
 } else {
     echo json_encode(['success' => false, 'message' => 'Sorry, there was an error uploading your file']);
 }
+
+$conn->close();
 ?>
