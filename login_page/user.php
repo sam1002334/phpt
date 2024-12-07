@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Compare the passwords directly
         if ($stored_password === $password) {
             // Password is correct, redirect to the main page
-            header("Location: ../main1/main_page.html");
+            header("Location: ../main1/main_page1.html");
             exit();
         } else {
             // Incorrect password
