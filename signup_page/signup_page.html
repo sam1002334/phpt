@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
+        /* General Reset */
         *, *:before, *:after {
             padding: 0;
             margin: 0;
@@ -20,16 +21,18 @@
         body {
             background-color: #080710;
             font-family: 'Poppins', sans-serif;
+            overflow: hidden; /* Hide overflow to ensure shapes don't go out of bounds */
         }
 
         /* Background Design */
         .background {
-            width: 450px;
-            height: 550px;
+            width: 100vw;
+            height: 100vh;
             position: absolute;
             transform: translate(-50%, -50%);
             left: 50%;
             top: 50%;
+            pointer-events: none; /* Prevent shapes from interacting with the form */
         }
 
         .background .shape {
@@ -37,19 +40,19 @@
             width: 200px;
             position: absolute;
             border-radius: 50%;
+            transition: transform 3s ease-in-out; /* Smooth transition for position change */
         }
 
+        /* Blue Circle */
         .shape:first-child {
             background: linear-gradient(#1845ad, #23a2f6);
-            left: -80px;
-            top: -80px;
         }
 
+        /* Orange Circle */
         .shape:last-child {
             background: linear-gradient(to right, #ff512f, #f09819);
-            right: -30px;
-            bottom: -80px;
         }
+
 
         /* Form Container */
         form {
@@ -206,6 +209,19 @@
 
         <button type="submit">Create Account</button>
     </form>
+    <script>
+        function randomizeShapes() {
+            const shapes = document.querySelectorAll('.background .shape');
+            shapes.forEach(shape => {
+                const randomX = Math.random() * window.innerWidth - shape.offsetWidth;
+                const randomY = Math.random() * window.innerHeight - shape.offsetHeight;
+                shape.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            });
+        }
+    
+        // Randomize positions every 3 seconds
+        setInterval(randomizeShapes, 2500);
+    </script>
     <script>
         // Check for a query parameter indicating an error
         const urlParams = new URLSearchParams(window.location.search);
