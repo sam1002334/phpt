@@ -124,10 +124,10 @@ $conn->close();
       <h1>Connect with Professional Engineers Instantly</h1>
       <p>Easy Life is the go-to platform for hiring engineers in any category. Create profiles or find the right professional for your needs today!</p>
       <div class="hero-buttons">
-        <a href="#">
+        <a href="../find_engineer/index.html">
           <button>Find Engineer</button>
         </a>
-        <a href="#">
+        <a href="../add_skill/add_skills.html">
           <button>Create Profile</button>
         </a>
       </div>
@@ -143,21 +143,21 @@ $conn->close();
     <div class="container">
       <h2>Explore Our Engineering Categories</h2>
       <div class="categories">
-        <a href="#">
+        <a href="../find_engineer/index.html">
           <div class="category">
             <img src="software_engineer.jpeg" alt="Software Engineers">
             <h3>Software Engineers</h3>
             <p>Build software solutions tailored to your needs.</p>
           </div>
         </a>
-        <a href="#">
+        <a href="../find_engineer/index.html">
           <div class="category">
             <img src="mechanical_engineer.jpeg" alt="Mechanical Engineers">
             <h3>Mechanical Engineers</h3>
             <p>Find mechanical experts for your projects.</p>
           </div>
         </a>
-        <a href="#">
+        <a href="../find_engineer/index.html">
           <div class="category">
             <img src="civil_engineer.jpeg" alt="Civil Engineers">
             <h3>Civil Engineers</h3>

@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stored_password === $password) {
             // Password is correct, start the session and redirect to the profile page
             session_start();
-            $_SESSION['email'] = $email;
+            $_SESSION['email'] = $email; // Store email in session
             header("Location: ../main1/profile.php");
             exit();
         } else {

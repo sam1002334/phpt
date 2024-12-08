@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #23272b;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .header-bar {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .header-bar .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .header-bar .progress-bar span {
+            display: block;
+            height: 10px;
+            background-color: #4caf50;
+            width: 30%; /* Change width dynamically based on completion */
+        }
+
+        .header-bar .cta {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .header-bar .cta:hover {
+            background-color: #0056b3;
+        }
+
+        .dashboard {
+            display: flex;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 30%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            margin-left: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .task img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .balance {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cta:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="#">Dashboard</a>
+            <a href="#">Lists</a>
+            <a href="#">Tasklists</a>
+            <a href="#">My Projects</a>
+            <a href="#">Inbox</a>
+            <a href="#">Feedback</a>
+        </div>
+        <div>
+            <a href="#">Free Credit</a>
+            <a href="#">Project Updates</a>
+            <a href="#">Bookmarks</a>
+        </div>
+    </div>
+
+    <div class="header-bar">
+        <h2>Set up your account</h2>
+        <div class="progress-bar">
+            <span></span>
+        </div>
+        <p>Having a complete verified account will increase the chances of getting jobs.</p>
+        <a href="#" class="cta">Add your address</a>
+
+        <div class="balance">
+            <h3>Balance</h3>
+            <p>Indian Rupee: ₹0.00</p>
+            <a href="#" class="cta">Add funds</a>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>You are almost ready to start earning!</h2>
+            <div class="task">
+                <img src="https://via.placeholder.com/24" alt="Email">
+                <span>Email Address: <strong>Already Verified</strong></span>
+            </div>
+            <div class="task">
+                <img src="https://via.placeholder.com/24" alt="Profile">
+                <a href="#">Update your profile</a>
+            </div>
+            <div class="task">
+                <img src="https://via.placeholder.com/24" alt="Projects">
+                <a href="#">Place your first bid</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Additional content goes here -->
+        </div>
+    </div>
+</body>
+</html>
