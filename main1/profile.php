@@ -53,6 +53,9 @@ $conn->close();
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css">
+
+
 </head>
 <body>
 
@@ -507,5 +510,6 @@ $conn->close();
     }
   </script>
   <script src="profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
 </body>
 </html>
