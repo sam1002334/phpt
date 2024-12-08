@@ -81,21 +81,21 @@
     <div class="container">
       <h2>Explore Our Engineering Categories</h2>
       <div class="categories">
-        <a href="#">
+        <a href="#" class="category-button">
           <div class="category">
             <img src="software_engineer.jpeg" alt="Software Engineers">
             <h3>Software Engineers</h3>
             <p>Build software solutions tailored to your needs.</p>
           </div>
         </a>
-        <a href="#">
+        <a href="#" class="category-button">
           <div class="category">
             <img src="mechanical_engineer.jpeg" alt="Mechanical Engineers">
             <h3>Mechanical Engineers</h3>
             <p>Find mechanical experts for your projects.</p>
           </div>
         </a>
-        <a href="#">
+        <a href="#" class="category-button">
           <div class="category">
             <img src="civil_engineer.jpeg" alt="Civil Engineers">
             <h3>Civil Engineers</h3>
@@ -444,60 +444,63 @@
     }
   </script>
   <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const heroButtons = document.querySelectorAll(".hero-buttons button");
+    document.addEventListener("DOMContentLoaded", () => {
+    // Function to create the pop-up container
+    const createPopup = () => {
+      if (document.getElementById("popup-container")) return; // Avoid duplicate popups
 
-        // Function to create the pop-up container
-        const createPopup = () => {
-          if (document.getElementById("popup-container")) return; // Avoid duplicate popups
+      const popupContainer = document.createElement("div");
+      popupContainer.id = "popup-container";
+      popupContainer.className = "popup-container";
 
-          const popupContainer = document.createElement("div");
-          popupContainer.id = "popup-container";
-          popupContainer.className = "popup-container";
+      popupContainer.innerHTML = `
+        <div class="popup-content">
+          <span class="close-btn" id="close-popup">&times;</span>
+          <h2>Welcome!</h2>
+          <a href="../login_page/login_page.html" class="popup-link">
+            <button class="popup-action-btn">Login</button>
+          </a>
+          <p class="popup-or-text">or</p>
+          <a href="../signup_page/signup_page.html" class="popup-link">
+            <button class="popup-action-btn">Signup</button>
+          </a>
+        </div>
+      `;
 
-          popupContainer.innerHTML = `
-            <div class="popup-content">
-              <span class="close-btn" id="close-popup">&times;</span>
-              <h2>Welcome!</h2>
-              <a href="../login_page/login_page.html" class="popup-link">
-                <button class="popup-action-btn">Login</button>
-              </a>
-              <p class="popup-or-text">or</p>
-              <a href="../signup_page/signup_page.html" class="popup-link">
-                <button class="popup-action-btn">Signup</button>
-              </a>
-            </div>
-          `;
+      document.body.appendChild(popupContainer);
 
-          document.body.appendChild(popupContainer);
-
-          // Close button functionality
-          const closePopup = document.getElementById("close-popup");
-          closePopup.addEventListener("click", () => {
-            popupContainer.style.display = "none";
-          });
-        };
-
-        // Show the popup
-        const showPopup = () => {
-          createPopup(); // Ensure popup is created
-          const popup = document.getElementById("popup-container");
-          popup.style.display = "flex"; // Show popup
-        };
-
-        // Add click event listeners to hero buttons
-        heroButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            setTimeout(showPopup, 300); // Add slight delay after button click
-          });
-        });
-
-        // Show popup automatically after 5 seconds (and then every 20 seconds)
-        setTimeout(() => {
-          showPopup(); // First show
-          setInterval(showPopup, 20000); // Every 20 seconds after that
-        }, 5000); // 5-second initial delay
+      // Close button functionality
+      const closePopup = document.getElementById("close-popup");
+      closePopup.addEventListener("click", () => {
+        popupContainer.style.display = "none";
       });
+    };
+
+    // Show the popup
+    const showPopup = () => {
+      createPopup(); // Ensure popup is created
+      const popup = document.getElementById("popup-container");
+      popup.style.display = "flex"; // Show popup
+    };
+
+  
+
+    // Add click event listeners to category buttons
+    const categoryButtons = document.querySelectorAll('.category-button');
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        setTimeout(showPopup, 300); // Add slight delay after button click
+      });
+    });
+
+    // Show popup automatically after 5 seconds (and then every 20 seconds)
+    setTimeout(() => {
+      showPopup(); // First show
+      setInterval(showPopup, 20000); // Every 20 seconds after that
+    }, 5000); // 5-second initial delay
+  });
+
 
   </script>
   
