@@ -221,44 +221,45 @@ $conn->close();
   <!-- Contact Us Section -->
   <section id="contact-us">
     <div class="container">
-      <h2>Contact Us</h2>
-      <p>We'd love to hear from you! If you have any questions or need assistance, feel free to reach out to us.</p>
-      <form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="b47f4da1-cee0-47c9-9907-9c706eed0f5d">
-        <div class="contact_input_area">
-          <div id="success_fail_info"></div>
-          <div class="row">
-            <!-- Form Group -->
-            <div class="col-12">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Name" required="required">
-              </div>
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! If you have any questions or need assistance, feel free to reach out to us.</p>
+        <form action="contact.php" method="POST">
+            <!-- Web3Forms access key -->
+            <input type="hidden" name="access_key" value="b47f4da1-cee0-47c9-9907-9c706eed0f5d">
+            <div class="contact_input_area">
+                <div id="success_fail_info"></div>
+                <div class="row">
+                    <!-- Form Group -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Name" required="required">
+                        </div>
+                    </div>
+                    <!-- Form Group -->
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required="required">
+                        </div>
+                    </div>
+                    <!-- Form Group -->
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
+                        </div>
+                    </div>
+                    <!-- Form Group -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="col-12 text-center">
+                        <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-secondary ct_btn" title="Submit Your Message!">Send Message</button>
+                    </div>
+                </div>
             </div>
-            <!-- Form Group -->
-            <div class="col-12 col-lg-6">
-              <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email" required="required">
-              </div>
-            </div>
-            <!-- Form Group -->
-            <div class="col-12 col-lg-6">
-              <div class="form-group">
-                <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
-              </div>
-            </div>
-            <!-- Form Group -->
-            <div class="col-12">
-              <div class="form-group">
-                <textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
-              </div>
-            </div>
-            <!-- Button -->
-            <div class="col-12 text-center">
-              <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-secondary ct_btn" title="Submit Your Message!">Send Message</button>
-            </div>
-          </div>
-        </div>
-      </form>
+        </form>
     </div>
   </section>
 
