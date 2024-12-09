@@ -54,8 +54,8 @@
     <div class="carousel">
       <div class="slides">
         <img src="photo1.jpg" alt="Image 1" />
-        <img src="photo2.jpeg" alt="Image 2" />
-        <img src="photo3.jpeg" alt="Image 3" />
+        <img src="photo2.webp" alt="Image 2" />
+        <img src="photo3.png" alt="Image 3" />
       </div>
     </div>
     <div class="hero-text">
@@ -102,6 +102,34 @@
             <p>Get assistance with construction and planning.</p>
           </div>
         </a>
+        <a href="#" class="category-button">
+          <div class="category">
+            <img src="electrical_engineer.avif" alt="Electrical Engineers">
+            <h3>Electrical Engineers</h3>
+            <p>Get assistance with circuits and power systems.</p>
+          </div>
+        </a>
+        <a href="#" class="category-button">
+          <div class="category">
+            <img src="data_science_ai.jpg" alt="Data Science & AI">
+            <h3>Data Science & AI</h3>
+            <p>Explore solutions for machine learning and analytics.</p>
+          </div>
+        </a>
+        <a href="#" class="category-button">
+          <div class="category">
+            <img src="project_management.avif" alt="Project Management">
+            <h3>Project Management</h3>
+            <p>Streamline planning and resource allocation.</p>
+          </div>
+        </a>
+        <a href="#" class="category-button">
+          <div class="category">
+            <img src="engineer_tools.png" alt="Engineering Tools and Software">
+            <h3>Engineering Tools & Software</h3>
+            <p>Find tools for design and analysis.</p>
+          </div>
+        </a>        
       </div>
     </div>
   </section>
@@ -486,6 +514,15 @@
       const popup = document.getElementById("popup-container");
       popup.style.display = "flex"; // Show popup
     };
+
+    // Add click event listeners to category buttons
+    const heroButtons = document.querySelectorAll('.hero-buttons');
+    heroButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default link behavior
+        setTimeout(showPopup, 300); // Add slight delay after button click
+      });
+    });
 
   
 

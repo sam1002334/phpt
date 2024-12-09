@@ -52,20 +52,217 @@ $conn->close();
   <link rel="stylesheet" href="main_style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="profile.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css">
+  <style>
+    /* Profile Container */
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -5px;
+        border-radius: 50%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
+    .profile:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
 
+    /* Profile photo styling */
+    .profile-photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #8e24aa;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-photo:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Profile Name */
+    .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: #8e24aa;
+        margin-top: 12px;
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .profile-name:hover {
+        color: #f50057;
+        transform: scale(1.05);
+    }
+
+    .profile-name:active {
+        color: #d500f9;
+        transform: scale(0.98);
+    }
+
+    /* Profile menu styling */
+    .profile-menu {
+        position: absolute;
+        top: 140px;
+        right: 20px;
+        background: linear-gradient(145deg, #f3f4f7, #e1bee7);
+        border: 1px solid #d1c4e9;
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        padding: 20px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+        display: none;
+        transition: all 0.3s ease;
+    }
+
+    .profile-menu:hover {
+        background: linear-gradient(145deg, #e1bee7, #f3f4f7);
+    }
+
+    .profile-menu a {
+        text-decoration: none;
+        color: #8e24aa;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .profile-menu a:hover {
+        color: #f50057;
+        transform: scale(1.05);
+    }
+
+    /* Profile photo small */
+    .profile-photo-small {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #8e24aa;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-photo-small:hover {
+        transform: scale(1.1);
+    }
+
+    /* Profile details hidden section */
+    .profile-details {
+        text-align: center;
+        color: #333;
+        display: none; /* Initially hidden */
+        margin-top: 20px;
+        padding-top: 20px;
+        background-color: #f3f4f7;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #8e24aa;
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-details p {
+        margin: 12px 0;
+        font-size: 16px;
+        color: #757575;
+    }
+
+    .profile-details p.profile-name {
+        font-size: 22px;
+        font-weight: bold;
+        color: #8e24aa;
+    }
+
+    /* For visible profile details */
+    .profile-details.visible {
+        display: block;
+    }
+
+    /* Button Styling */
+    .settings-button, .logout-button, .details-button {
+        margin: 20px 0;
+        padding: 16px 40px;
+        font-size: 18px;
+        border: none;
+        background: linear-gradient(145deg, #8e24aa, #9c27b0);
+        color: #fff;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .settings-button:hover, .logout-button:hover, .details-button:hover {
+        background: linear-gradient(145deg, #9c27b0, #8e24aa);
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .settings-button:active, .logout-button:active, .details-button:active {
+        transform: scale(0.98);
+        background: linear-gradient(145deg, #7b1fa2, #9c27b0); /* Slightly darker on click */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .profile {
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .profile-photo {
+            width: 70px;
+            height: 70px;
+        }
+
+        .profile-name {
+            font-size: 18px;
+        }
+
+        .profile-menu {
+            top: 120px;
+            width: 300px;
+        }
+
+        .profile-details {
+            width: 100%;
+        }
+
+        .settings-button, .logout-button, .details-button {
+            padding: 14px 30px;
+            font-size: 16px;
+        }
+    }
+
+  </style>
 </head>
 <body>
 
   <!-- Header Section -->
   <header>
     <div class="logo">
-        <a href="main_page1.html">
+        <a href="profile.php">
             <img src="logo1.png" alt="Easy Life Logo">
         </a>
-        <a href="main_page1.html" class="company-name">Easy Life</a>
+        <a href="profile.php" class="company-name">Easy Life</a>
     </div>
     <nav>
         <ul class="desktop-nav">
@@ -87,7 +284,7 @@ $conn->close();
      <div class="profile">
         <!-- Profile Photo Section -->
         
-<div class="profile-photo" id="profile-photo">
+        <div class="profile-photo" id="profile-photo">
             <img src="<?php echo htmlspecialchars($profilePhoto); ?>" alt="Profile Photo" id="profile-img">
         </div>
         <!-- Profile Menu Section -->
@@ -119,8 +316,8 @@ $conn->close();
     <div class="carousel">
       <div class="slides">
         <img src="photo1.jpg" alt="Image 1" />
-        <img src="photo2.jpeg" alt="Image 2" />
-        <img src="photo3.jpeg" alt="Image 3" />
+        <img src="photo2.webp" alt="Image 2" />
+        <img src="photo3.png" alt="Image 3" />
       </div>
     </div>
     <div class="hero-text">
@@ -167,6 +364,35 @@ $conn->close();
             <p>Get assistance with construction and planning.</p>
           </div>
         </a>
+        <a href="../find_engineer/index.html" class="category-button">
+          <div class="category">
+            <img src="electrical_engineer.avif" alt="Electrical Engineers">
+            <h3>Electrical Engineers</h3>
+            <p>Get assistance with circuits and power systems.</p>
+          </div>
+        </a>
+        <a href="../find_engineer/index.html" class="category-button">
+          <div class="category">
+            <img src="data_science_ai.jpg" alt="Data Science & AI">
+            <h3>Data Science & AI</h3>
+            <p>Explore solutions for machine learning and analytics.</p>
+          </div>
+        </a>
+        <a href="../find_engineer/index.html" class="category-button">
+          <div class="category">
+            <img src="project_management.avif" alt="Project Management">
+            <h3>Project Management</h3>
+            <p>Streamline planning and resource allocation.</p>
+          </div>
+        </a>
+        <a href="../find_engineer/index.html" class="category-button">
+          <div class="category">
+            <img src="engineer_tools.png" alt="Engineering Tools and Software">
+            <h3>Engineering Tools & Software</h3>
+            <p>Find tools for design and analysis.</p>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -307,6 +533,7 @@ $conn->close();
         mobileMenu.classList.remove('active');
       }
     });
+    
   
     // Toggle How It Works section visibility
     document.getElementById('toggle-steps-btn').addEventListener('click', function () {
@@ -510,6 +737,5 @@ $conn->close();
     }
   </script>
   <script src="profile.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
 </body>
 </html>
