@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
-    header("Location: login_page.html");
+    header("Location: ../login_page/login_page.html");
     exit();
 }
 
@@ -327,7 +327,7 @@ $conn->close();
         <a href="../find_engineer/index.html">
           <button>Find Engineer</button>
         </a>
-        <a href="../add_skill/add_skills.html">
+        <a href="../welcome_new_engineer/welcome.html">
           <button>Create Profile</button>
         </a>
       </div>

@@ -37,16 +37,43 @@ if (isset($_SESSION['email'])) {
             $stmt->bind_result($user_id);
             $stmt->fetch();
 
-            // Now we have the user_id, let's insert skills into the database
-            $stmt = $conn->prepare("INSERT INTO user_skills (user_id, skill_id) VALUES (?, ?)");
+            // Now we have the user_id, let's check each skill if it's already added
+            $skillsToAdd = [];
+            
+            // Prepare a statement to check if the skill already exists for the user
+            $checkStmt = $conn->prepare("SELECT skill_id FROM user_skills WHERE user_id = ? AND skill_id = ?");
 
             foreach ($inputData['skills'] as $skill_id) {
-                $stmt->bind_param("ii", $user_id, $skill_id);
-                $stmt->execute();
+                // Check if this skill is already linked to the user
+                $checkStmt->bind_param("ii", $user_id, $skill_id);
+                $checkStmt->execute();
+                $checkStmt->store_result();
+
+                if ($checkStmt->num_rows === 0) {
+                    // If skill is not found, add it to the list of skills to insert
+                    $skillsToAdd[] = $skill_id;
+                }
             }
 
-            // Success response
-            echo json_encode(["success" => true]);
+            // Now insert the new skills that are not already in the table
+            if (count($skillsToAdd) > 0) {
+                $insertStmt = $conn->prepare("INSERT INTO user_skills (user_id, skill_id) VALUES (?, ?)");
+
+                foreach ($skillsToAdd as $skill_id) {
+                    $insertStmt->bind_param("ii", $user_id, $skill_id);
+                    $insertStmt->execute();
+                }
+
+                // Success response
+                echo json_encode(["success" => true, "added_skills" => $skillsToAdd]);
+            } else {
+                // No new skills to add
+                echo json_encode(["success" => true, "message" => "No new skills were added."]);
+            }
+
+            // Close the insert statement
+            $insertStmt->close();
+            $checkStmt->close();
         } else {
             // User not found
             echo json_encode(["error" => "User not found"]);
